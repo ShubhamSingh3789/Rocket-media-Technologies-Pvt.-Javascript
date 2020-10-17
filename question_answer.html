@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<title>Demo of adding element to an array</title>
+</head>
+
+<body>
+ <script type="text/javascript">
+var data = new Array(); // creating array
+var sum="";
+var count="";
+function add_element(){
+data.push(document.getElementById('t1').value); // adding element to array
+document.getElementById('t1').value=''; // Making the text box blank
+disp(); // function for displaying the array elements
+}
+
+function disp(){
+for (i=0;i<data.length;i++) 
+{ 
+document.getElementById('disp').innerHTML=data;
+} 
+}
+function out()
+{
+			var vis = -1;
+			var fre = new Array();//array to store frequency
+			var sum=0;
+			
+			for(var i = 0; i < data.length; i++) 
+			{
+				var count=1;
+				for(var j = i+1; j < data.length; j++) 
+					{
+				if (data[i] == data[j])
+					{
+						count = count + 1;
+						fre[j]=vis;
+						//document.getElementById('output').innerHTML=count;
+				
+					}
+				}
+				if (fre[i] != vis) 
+				{
+					fre[i] = count;
+					
+				}
+			
+			
+			}
+			 for (i = 0; i < data.length; i++) {
+				if (fre[i] != vis)
+				{
+					var sum = sum + parseInt(fre[i] / 2);
+				
+				}
+
+				} 
+				document.getElementById('output').innerHTML = sum;
+			
+	          	}
+	 </script>
+
+<input type=text  id='t1' placeholder="enter no"><br><input type=button value='Add' onClick='add_element()'>
+<br><input type="button" value="Output" onclick="out()">
+<div id=disp></div>
+<div id="output"></div>
+
+</body>
+</html>
